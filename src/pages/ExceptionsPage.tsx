@@ -14,10 +14,10 @@ export function ExceptionsPage() {
   );
 
   return (
-    <div className="space-y-4 p-5">
+    <div className="space-y-4 p-3 sm:p-5">
       <div>
         <p className="text-[11px] font-medium text-gray-1">Eccezioni e reclami</p>
-        <h1 className="text-2xl font-bold text-navy">Dispute aperte</h1>
+        <h1 className="text-xl font-bold text-navy sm:text-2xl">Dispute aperte</h1>
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
         <Card>
@@ -57,7 +57,7 @@ export function ExceptionsPage() {
             <ul className="divide-y divide-[#eef1f4]">
               {flaggedAlerts.map((alert) => (
                 <li key={alert.id} className="px-4 py-3">
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <Badge tone={alert.severity === "critical" ? "danger" : "warning"}>
                       {alert.severity === "critical"
                         ? "critico"

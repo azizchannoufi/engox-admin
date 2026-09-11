@@ -5,10 +5,10 @@ import { Colors } from "@/constants/theme";
 
 export function SettingsPage() {
   return (
-    <div className="space-y-4 p-5">
+    <div className="space-y-4 p-3 sm:p-5">
       <div>
         <p className="text-[11px] font-medium text-gray-1">Impostazioni</p>
-        <h1 className="text-2xl font-bold text-navy">Workspace e API</h1>
+        <h1 className="text-xl font-bold text-navy sm:text-2xl">Workspace e API</h1>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -29,12 +29,12 @@ export function SettingsPage() {
               </dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt className="text-gray-1">Base API</dt>
-              <dd className="font-mono text-xs">{appConfig.apiBaseUrl}</dd>
+              <dt className="shrink-0 text-gray-1">Base API</dt>
+              <dd className="break-all text-right font-mono text-xs">{appConfig.apiBaseUrl}</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt className="text-gray-1">Socket GPS</dt>
-              <dd className="font-mono text-xs">{appConfig.gpsWsUrl}</dd>
+              <dt className="shrink-0 text-gray-1">Socket GPS</dt>
+              <dd className="break-all text-right font-mono text-xs">{appConfig.gpsWsUrl}</dd>
             </div>
           </dl>
         </Card>
@@ -45,7 +45,7 @@ export function SettingsPage() {
             Portati dall’app autisti così Fleet Ops resta sui colori Engox
             verde / navy.
           </p>
-          <div className="mt-4 grid grid-cols-5 gap-2">
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-5">
             {Object.entries({
               navy: Colors.blues.blue1,
               green1: Colors.greens.green1,
@@ -66,7 +66,7 @@ export function SettingsPage() {
 
         <Card className="p-5 lg:col-span-2">
           <h2 className="text-sm font-semibold text-navy">Endpoint NestJS pronti</h2>
-          <ul className="mt-3 grid gap-2 text-sm text-[#4b5563] md:grid-cols-2">
+          <ul className="mt-3 grid gap-2 break-words text-sm text-[#4b5563] md:grid-cols-2">
             <li>`POST /auth/login` — scambio token Firebase</li>
             <li>`POST /auth/refresh` — rinnovo access token</li>
             <li>`POST /auth/logout` — invalida le sessioni</li>

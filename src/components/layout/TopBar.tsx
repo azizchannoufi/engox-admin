@@ -3,6 +3,7 @@ import { timeAgo } from "@/lib/dates";
 import {
   Bell,
   ChevronDown,
+  Menu,
   Plus,
   Search,
   Wifi,
@@ -44,6 +45,8 @@ export function TopBar() {
   const searchQuery = useUiStore((s) => s.searchQuery);
   const setSearchQuery = useUiStore((s) => s.setSearchQuery);
   const openNewOrder = useUiStore((s) => s.openNewOrder);
+  const mobileNavOpen = useUiStore((s) => s.mobileNavOpen);
+  const toggleMobileNav = useUiStore((s) => s.toggleMobileNav);
   const { data: alerts = [] } = useAlertsQuery();
   const [openAlerts, setOpenAlerts] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
@@ -51,10 +54,20 @@ export function TopBar() {
   const unread = alerts.filter((alert) => !alert.acknowledged).length;
 
   return (
-    <header className="flex h-[64px] items-center gap-4 border-b border-[#e7ebf0] bg-white px-4">
-      <div className="flex min-w-[220px] items-center gap-2.5">
-        <img src="/logo.png" alt="Engox Logistics" className="h-8 w-auto" />
-        <div className="leading-tight">
+    <header className="relative z-50 flex h-16 shrink-0 items-center gap-2 border-b border-[#e7ebf0] bg-white px-3 sm:gap-4 sm:px-4">
+      <button
+        type="button"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-[#e7ebf0] text-navy hover:bg-navy-50 lg:hidden"
+        aria-label={mobileNavOpen ? "Chiudi menu" : "Apri menu"}
+        aria-expanded={mobileNavOpen}
+        onClick={toggleMobileNav}
+      >
+        <Menu size={18} />
+      </button>
+
+      <div className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-2.5">
+        <img src="/logo.png" alt="Engox Logistics" className="h-7 w-auto sm:h-8" />
+        <div className="hidden leading-tight min-[420px]:block">
           <p className="text-[11px] font-extrabold tracking-[0.14em] text-navy">
             ENGOX FLEET OPS
           </p>
@@ -62,12 +75,12 @@ export function TopBar() {
         </div>
       </div>
 
-      <div className="hidden items-center gap-2 rounded-md border border-[#e7ebf0] px-3 py-1.5 lg:flex">
+      <div className="hidden min-w-0 items-center gap-2 rounded-md border border-[#e7ebf0] px-3 py-1.5 lg:flex">
         <span className="text-[11px] text-gray-1">Deposito</span>
         <span className="max-w-[280px] truncate text-sm font-semibold text-navy">
           {DEPOT.name}
         </span>
-        <ChevronDown size={14} className="text-gray-1" />
+        <ChevronDown size={14} className="shrink-0 text-gray-1" />
       </div>
 
       <div className="hidden items-center gap-3 font-mono text-[11px] text-gray-1 xl:flex">
@@ -82,7 +95,7 @@ export function TopBar() {
         </span>
       </div>
 
-      <div className="relative mx-auto hidden w-full max-w-md md:block">
+      <div className="relative mx-auto hidden min-w-0 w-full max-w-md md:block">
         <Search
           size={15}
           className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-1"
@@ -95,8 +108,8 @@ export function TopBar() {
         />
       </div>
 
-      <div className="ml-auto flex items-center gap-2">
-        <Badge tone="mint" className="hidden sm:inline-flex">
+      <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+        <Badge tone="mint" className="hidden xl:inline-flex">
           <Wifi size={11} />
           Tutti i microservizi operativi
         </Badge>
@@ -118,7 +131,7 @@ export function TopBar() {
             ) : null}
           </button>
           {openAlerts ? (
-            <div className="absolute right-0 z-30 mt-2 w-80 overflow-hidden rounded-lg border border-[#e7ebf0] bg-white shadow-lg">
+            <div className="absolute right-0 z-30 mt-2 w-[min(20rem,calc(100vw-1.5rem))] overflow-hidden rounded-lg border border-[#e7ebf0] bg-white shadow-lg">
               <div className="border-b border-[#eef1f4] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-gray-1">
                 Avvisi in tempo reale
               </div>
@@ -149,7 +162,7 @@ export function TopBar() {
           }}
         >
           <Plus size={14} />
-          Ricevi lista
+          <span className="hidden sm:inline">Ricevi lista</span>
         </Button>
 
         <div className="relative">
@@ -158,7 +171,7 @@ export function TopBar() {
               setOpenProfile((v) => !v);
               setOpenAlerts(false);
             }}
-            className="flex items-center gap-2 rounded-md py-1 pl-1 pr-2 hover:bg-navy-50"
+            className="flex items-center gap-2 rounded-md py-1 pl-1 pr-1 hover:bg-navy-50 sm:pr-2"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-navy text-xs font-bold text-white">
               {initials(session?.name ?? "MK")}

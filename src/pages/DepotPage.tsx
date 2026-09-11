@@ -95,13 +95,13 @@ export function DepotPage() {
     .map((p) => p.id);
 
   return (
-    <div className="space-y-4 p-5">
+    <div className="space-y-4 p-3 sm:p-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="text-[11px] font-medium text-gray-1">
             Cortile deposito · ricezione subappalto
           </p>
-          <h1 className="text-2xl font-bold text-navy">Gestione ordini deposito</h1>
+          <h1 className="text-xl font-bold text-navy sm:text-2xl">Gestione ordini deposito</h1>
         </div>
         <Button onClick={openNewOrder}>
           <Boxes size={14} />
@@ -139,7 +139,7 @@ export function DepotPage() {
       </div>
 
       <Card className="flex flex-wrap items-center gap-3 p-3">
-        <div className="relative min-w-[220px] flex-1">
+        <div className="relative min-w-0 w-full flex-1 sm:min-w-[220px]">
           <QrCode
             size={14}
             className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-1"
@@ -152,7 +152,7 @@ export function DepotPage() {
           />
         </div>
         <select
-          className="h-9 rounded-md border border-gray-2 bg-white px-3 text-sm"
+          className="h-9 w-full min-w-0 rounded-md border border-gray-2 bg-white px-3 text-sm sm:w-auto"
           value={lotId}
           onChange={(e) => setLotId(e.target.value)}
         >
@@ -179,7 +179,7 @@ export function DepotPage() {
           Metti in baia
         </Button>
         <select
-          className="h-9 rounded-md border border-gray-2 bg-white px-3 text-sm"
+          className="h-9 w-full min-w-0 rounded-md border border-gray-2 bg-white px-3 text-sm sm:w-auto"
           value={driverId}
           onChange={(e) => setDriverId(e.target.value)}
         >
@@ -278,7 +278,7 @@ export function DepotPage() {
         </Card>
 
         <Card className="overflow-hidden">
-          <div className="flex items-center justify-between border-b border-[#eef1f4] px-4 py-2.5">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#eef1f4] px-4 py-2.5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-1">
               Colli in cortile
             </p>
@@ -298,7 +298,7 @@ export function DepotPage() {
             />
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[720px] text-left text-sm">
+              <table className="w-full min-w-[720px] text-left text-sm [&_td]:whitespace-nowrap [&_th]:whitespace-nowrap">
                 <thead className="bg-[#f7f9fb] text-[10px] uppercase tracking-wide text-gray-1">
                   <tr>
                     <th className="px-3 py-2" />

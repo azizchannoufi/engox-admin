@@ -26,16 +26,16 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-navy">
+    <div className="flex min-h-dvh bg-navy">
       <div className="relative hidden flex-1 overflow-hidden lg:block">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(1,212,166,0.18),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(201,162,39,0.16),transparent_42%)]" />
-        <div className="relative flex h-full flex-col justify-between p-12 text-white">
+        <div className="relative flex h-full flex-col justify-between p-8 text-white xl:p-12">
           <img src="/logo2.png" alt="Engox" className="h-10 w-auto brightness-0 invert" />
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-green-2">
               Comando missioni
             </p>
-            <h1 className="mt-3 max-w-lg text-4xl font-bold leading-tight">
+            <h1 className="mt-3 max-w-lg text-3xl font-bold leading-tight xl:text-4xl">
               Operazioni flotta per l’ultimo miglio — live, verificabili, on-brand.
             </h1>
             <p className="mt-4 max-w-md text-sm text-white/70">
@@ -47,7 +47,7 @@ export function LoginPage() {
         </div>
       </div>
 
-      <div className="flex w-full max-w-md flex-col justify-center bg-white px-8 py-12">
+      <div className="flex w-full flex-1 flex-col justify-center bg-white px-5 py-10 sm:px-8 lg:max-w-md lg:flex-none lg:py-12">
         <img src="/logo.png" alt="Engox Logistics" className="mb-8 h-9 w-auto self-start" />
         <h2 className="text-2xl font-bold text-navy">Accedi</h2>
         <p className="mt-1 text-sm text-gray-1">

@@ -38,12 +38,12 @@ export function DashboardPage() {
   const alerts = useAlertsQuery();
 
   return (
-    <div className="space-y-4 p-5">
+    <div className="space-y-4 p-3 sm:p-5">
       <div>
         <p className="text-[11px] font-medium text-gray-1">
           Comando flotta · Hub Queens
         </p>
-        <h1 className="text-2xl font-bold text-navy">Dashboard esecutiva</h1>
+        <h1 className="text-xl font-bold text-navy sm:text-2xl">Dashboard esecutiva</h1>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -94,7 +94,7 @@ export function DashboardPage() {
               {drivers.data?.filter((d) => d.isOnline).length ?? 0} mezzi live
             </span>
           </CardHeader>
-          <div className="h-[340px]">
+          <div className="h-[220px] sm:h-[340px]">
             <OpsMap
               drivers={drivers.data ?? []}
               orders={orders.data ?? []}
@@ -111,7 +111,7 @@ export function DashboardPage() {
                 Stato consegne live
               </div>
             </CardHeader>
-            <div className="grid grid-cols-2 gap-2 p-3">
+            <div className="grid gap-2 p-3 sm:grid-cols-2">
               <div className="h-[160px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -171,7 +171,7 @@ export function DashboardPage() {
         </CardHeader>
         <div className="divide-y divide-[#eef1f4]">
           {(alerts.data ?? []).map((alert) => (
-            <div key={alert.id} className="flex items-start gap-3 px-4 py-3">
+            <div key={alert.id} className="flex items-start gap-3 px-3 py-3 sm:px-4">
               <span
                 className={
                   alert.severity === "critical"

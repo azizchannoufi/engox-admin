@@ -9,11 +9,11 @@ export function AppShell() {
   if (!session) return <Navigate to="/login" replace />;
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-canvas">
+    <div className="flex h-dvh flex-col overflow-hidden bg-canvas">
       <TopBar />
-      <div className="flex min-h-0 flex-1">
+      <div className="flex min-h-0 min-w-0 flex-1">
         <Sidebar />
-        <main className="min-h-0 min-w-0 flex-1 overflow-y-auto custom-scroll">
+        <main className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto custom-scroll">
           <Outlet />
         </main>
       </div>

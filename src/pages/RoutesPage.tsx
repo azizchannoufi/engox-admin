@@ -108,11 +108,11 @@ export function RoutesPage() {
   }
 
   return (
-    <div className="space-y-4 p-5">
+    <div className="space-y-4 p-3 sm:p-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="text-[11px] font-medium text-gray-1">Ottimizzatore percorsi</p>
-          <h1 className="text-2xl font-bold text-navy">Pianificazione ordini e rotte</h1>
+          <h1 className="text-xl font-bold text-navy sm:text-2xl">Pianificazione ordini e rotte</h1>
         </div>
         <Button onClick={openNewOrder}>
           <Plus size={14} />
@@ -132,7 +132,7 @@ export function RoutesPage() {
         </div>
         <Input
           placeholder="Cerca ordine, destinatario, indirizzo"
-          className="max-w-xs"
+          className="w-full max-w-xs"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -144,7 +144,7 @@ export function RoutesPage() {
           Seleziona non assegnati ({unassigned.length})
         </Button>
         <select
-          className="h-9 rounded-md border border-gray-2 bg-white px-3 text-sm"
+          className="h-9 w-full min-w-0 rounded-md border border-gray-2 bg-white px-3 text-sm sm:w-auto"
           value={driverId}
           onChange={(e) => setDriverId(e.target.value)}
         >
@@ -169,7 +169,7 @@ export function RoutesPage() {
             <TableSkeleton />
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[760px] text-left text-sm">
+              <table className="w-full min-w-[760px] text-left text-sm [&_td]:whitespace-nowrap [&_th]:whitespace-nowrap">
                 <thead className="bg-[#f7f9fb] text-[11px] uppercase tracking-wide text-gray-1">
                   <tr>
                     <th className="px-3 py-3">
@@ -259,7 +259,7 @@ export function RoutesPage() {
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={() => dropOnDriver(driver.id)}
               >
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <p className="text-sm font-semibold text-navy">
                       {driver.firstName} {driver.lastName}

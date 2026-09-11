@@ -21,7 +21,7 @@ export function KpiChip({
   };
 
   return (
-    <div className="flex min-w-[168px] items-start gap-2.5 rounded-lg border border-[#e7ebf0] bg-white px-3.5 py-2.5">
+    <div className="flex min-w-0 w-full items-start gap-2.5 rounded-lg border border-[#e7ebf0] bg-white px-3.5 py-2.5">
       <div className={cn("mt-0.5", tones[tone])}>{icon}</div>
       <div>
         <p className="text-[11px] font-medium text-gray-1">{label}</p>

@@ -92,14 +92,14 @@ export function PodInspectionPage() {
   ];
 
   return (
-    <div className="space-y-4 p-5">
+    <div className="space-y-4 p-3 sm:p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
+        <div className="min-w-0">
           <p className="text-[11px] font-medium text-gray-1">
             Comando flotta › Prova di consegna (POD) › Archivio audit e ispezione
           </p>
-          <div className="mt-1 flex items-center gap-3">
-            <h1 className="text-2xl font-bold leading-tight text-navy">
+          <div className="mt-1 flex flex-wrap items-center gap-3">
+            <h1 className="text-xl font-bold leading-tight text-navy sm:text-2xl">
               Ispezione POD e archivio
               <br className="hidden sm:block" /> audit
             </h1>
@@ -108,7 +108,7 @@ export function PodInspectionPage() {
             </Badge>
           </div>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="grid w-full gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap">
           <KpiChip
             icon={<ShieldCheck size={16} />}
             label="POD verificati oggi"
@@ -137,7 +137,7 @@ export function PodInspectionPage() {
           <Calendar size={14} />
           Oggi ({formatItDate(new Date())})
         </Button>
-        <div className="relative min-w-[240px] flex-1">
+        <div className="relative min-w-0 w-full flex-1 sm:min-w-[240px]">
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-1" />
           <Input
             className="pl-9"
@@ -206,7 +206,7 @@ export function PodInspectionPage() {
 
       <div className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
         <Card className="overflow-hidden">
-          <div className="flex items-center justify-between border-b border-[#eef1f4] px-4 py-2.5">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#eef1f4] px-4 py-2.5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-1">
               Prove di consegna del manifesto
             </p>
@@ -221,7 +221,7 @@ export function PodInspectionPage() {
             />
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[720px] text-left text-sm">
+              <table className="w-full min-w-[720px] text-left text-sm [&_td]:whitespace-nowrap [&_th]:whitespace-nowrap">
                 <thead className="text-[10px] uppercase tracking-wide text-gray-1">
                   <tr>
                     <th className="px-3 py-2" />
@@ -292,7 +292,7 @@ export function PodInspectionPage() {
               </table>
             </div>
           )}
-          <div className="flex items-center justify-between border-t border-[#eef1f4] px-4 py-2 text-[11px] text-gray-1">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#eef1f4] px-4 py-2 text-[11px] text-gray-1">
             <span>
               Mostrati 1–{filtered.length} di {formatNumber(kpis.data?.auditedPods ?? filtered.length)} record di audit
             </span>
@@ -309,7 +309,7 @@ export function PodInspectionPage() {
 function PodInspector({ pod }: { pod: PodRecord }) {
   return (
     <div className="overflow-hidden rounded-lg border border-[#111] bg-[#111] text-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
-      <div className="flex items-start justify-between px-4 py-3">
+      <div className="flex flex-wrap items-start justify-between gap-2 px-4 py-3">
         <div>
           <div className="flex items-center gap-2">
             <FileSpreadsheet size={16} />
@@ -327,7 +327,7 @@ function PodInspector({ pod }: { pod: PodRecord }) {
 
       <div className="space-y-3 bg-white p-3 text-ink">
         <section className="overflow-hidden rounded-md border border-[#e7ebf0]">
-          <div className="flex items-center justify-between px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-gray-1">
+          <div className="flex flex-wrap items-center justify-between gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-gray-1">
             <span className="inline-flex items-center gap-1.5">
               <ImageIcon size={12} /> Prova fotografica
             </span>
@@ -338,7 +338,7 @@ function PodInspector({ pod }: { pod: PodRecord }) {
         </section>
 
         <section className="rounded-md border border-[#e7ebf0] p-3">
-          <div className="mb-2 flex items-center justify-between text-[11px] font-semibold uppercase tracking-wide text-gray-1">
+          <div className="mb-2 flex flex-wrap items-center justify-between gap-1 text-[11px] font-semibold uppercase tracking-wide text-gray-1">
             <span className="inline-flex items-center gap-1.5">
               <Signature size={12} /> Firma del destinatario
             </span>
@@ -363,7 +363,7 @@ function PodInspector({ pod }: { pod: PodRecord }) {
         </section>
 
         <section className="overflow-hidden rounded-md border border-[#e7ebf0]">
-          <div className="flex items-center justify-between px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-gray-1">
+          <div className="flex flex-wrap items-center justify-between gap-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-gray-1">
             <span className="inline-flex items-center gap-1.5">
               <MapPin size={12} /> Geotag e telemetria veicolo
             </span>

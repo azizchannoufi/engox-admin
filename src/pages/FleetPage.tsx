@@ -40,15 +40,18 @@ export function FleetPage() {
   );
 
   return (
-    <div className="space-y-4 p-5">
+    <div className="space-y-4 p-3 sm:p-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="text-[11px] font-medium text-gray-1">
             Veicoli e autisti
           </p>
-          <h1 className="text-2xl font-bold text-navy">Assegnazione flotta</h1>
+          <h1 className="text-xl font-bold text-navy sm:text-2xl">Assegnazione flotta</h1>
         </div>
-        <Link to="/drivers" className="text-sm font-semibold text-green-3 hover:underline">
+        <Link
+          to="/drivers"
+          className="text-sm font-semibold text-green-3 hover:underline"
+        >
           Apri gestione autisti →
         </Link>
       </div>
@@ -58,7 +61,7 @@ export function FleetPage() {
           placeholder="Cerca mezzo, targa, autista"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="max-w-sm"
+          className="w-full max-w-sm"
         />
       </div>
 
@@ -72,7 +75,7 @@ export function FleetPage() {
           />
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[860px] text-left text-sm">
+            <table className="w-full min-w-[860px] text-left text-sm [&_td]:whitespace-nowrap [&_th]:whitespace-nowrap">
               <thead className="bg-[#f7f9fb] text-[11px] uppercase tracking-wide text-gray-1">
                 <tr>
                   <th className="px-4 py-3 font-semibold">ID veicolo</th>
@@ -139,11 +142,12 @@ export function FleetPage() {
             </option>
           ))}
         </select>
-        <div className="mt-4 flex justify-end gap-2">
-          <Button variant="outline" onClick={() => setAssignVehicleId(null)}>
+        <div className="mt-4 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+          <Button variant="outline" className="w-full sm:w-auto" onClick={() => setAssignVehicleId(null)}>
             Annulla
           </Button>
           <Button
+            className="w-full sm:w-auto"
             disabled={!driverId || assign.isPending}
             onClick={() => {
               if (!assignVehicleId) return;

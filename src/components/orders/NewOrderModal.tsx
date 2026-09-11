@@ -99,7 +99,7 @@ export function NewOrderModal() {
           Formato: <strong>QR, Destinatario, Indirizzo, Quartiere</strong>. Il QR è
           opzionale. Separatori virgola, pipe o tabulazione.
         </p>
-        <div className="flex items-center justify-between text-xs text-gray-1">
+        <div className="flex flex-col gap-2 text-xs text-gray-1 sm:flex-row sm:items-center sm:justify-between">
           <span className="inline-flex items-center gap-1.5">
             <Package size={12} />
             {parsed.length} colli analizzati
@@ -154,11 +154,12 @@ export function NewOrderModal() {
         </Field>
       </div>
 
-      <div className="mt-5 flex justify-end gap-2">
-        <Button variant="outline" onClick={handleClose}>
+      <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+        <Button variant="outline" className="w-full sm:w-auto" onClick={handleClose}>
           Annulla
         </Button>
         <Button
+          className="w-full sm:w-auto"
           disabled={parsed.length === 0 || ingest.isPending}
           onClick={() => {
             ingest.mutate(

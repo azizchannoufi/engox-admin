@@ -40,6 +40,20 @@ function MapFocus({ center, zoom }: { center: [number, number]; zoom: number }) 
   return null;
 }
 
+function MapResize() {
+  const map = useMap();
+  useEffect(() => {
+    const container = map.getContainer();
+    const observer = new ResizeObserver(() => {
+      map.invalidateSize();
+    });
+    observer.observe(container);
+    map.invalidateSize();
+    return () => observer.disconnect();
+  }, [map]);
+  return null;
+}
+
 interface OpsMapProps {
   drivers?: Driver[];
   orders?: Order[];
@@ -69,6 +83,7 @@ export function OpsMap({
       className="h-full w-full rounded-[inherit]"
     >
       <MapFocus center={center} zoom={zoom} />
+      <MapResize />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"

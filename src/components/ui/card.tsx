@@ -23,7 +23,7 @@ export function CardHeader({
   return (
     <div
       className={cn(
-        "flex items-center justify-between gap-3 border-b border-[#eef1f4] px-4 py-3",
+        "flex flex-wrap items-center justify-between gap-3 border-b border-[#eef1f4] px-4 py-3",
         className,
       )}
       {...props}

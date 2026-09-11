@@ -8,16 +8,17 @@ export function DriversPage() {
   const query = useDriversQuery();
 
   return (
-    <div className="space-y-4 p-5">
+    <div className="space-y-4 p-3 sm:p-5">
       <div>
         <p className="text-[11px] font-medium text-gray-1">Gestione autisti</p>
-        <h1 className="text-2xl font-bold text-navy">Turno in servizio</h1>
+        <h1 className="text-xl font-bold text-navy sm:text-2xl">Turno in servizio</h1>
       </div>
       <Card className="overflow-hidden">
         {query.isLoading ? (
           <TableSkeleton />
         ) : (
-          <table className="w-full min-w-[800px] text-left text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[800px] text-left text-sm [&_td]:whitespace-nowrap [&_th]:whitespace-nowrap">
             <thead className="bg-[#f7f9fb] text-[11px] uppercase tracking-wide text-gray-1">
               <tr>
                 <th className="px-4 py-3 font-semibold">Autista</th>
@@ -72,6 +73,7 @@ export function DriversPage() {
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </Card>
     </div>
